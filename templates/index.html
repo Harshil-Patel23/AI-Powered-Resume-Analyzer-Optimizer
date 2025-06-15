@@ -8,27 +8,38 @@
     <header class="header">
       <h1>AI-Powered Resume Analyzer & Optimizer</h1>
     </header>
-    <legend class="legend">
-      <form method="post" enctype="multipart/form-data">
-        <br />
-        <h2><label for="resume_pdf">Upload Your Resume</label></h2>
-        <input type="file" name="pdf_upload" accept="application/pdf" />
-        <br /><br />
-        <h2><label for="job_description">Paste your job description</label></h2>
-        <textarea name="job_description" id="job_description"></textarea><br />
-        <button type="submit">SUBMIT</button>
-      </form>
-    </legend>
-    {% if score is defined %}
-    <div class="result">
-      <h3>Match Score: {{ score }}%</h3>
-      {% for category, data in details.items() %}
-      <h4>{{ category }}</h4>
-      <p><strong>Required:</strong> {{ data.required }}</p>
-      <p><strong>Matched:</strong> {{ data.matched }}</p>
-      <p><strong>Missing:</strong> {{ data.missing }}</p>
-      {% endfor %}
+    <div class="parent">
+      <div class="div1">
+        <form method="post" enctype="multipart/form-data">
+          <br />
+          <h2><label for="resume_pdf">Upload Your Resume</label></h2>
+          <input
+            type="file"
+            class="pdfinput"
+            name="pdf_upload"
+            accept="application/pdf"
+          />
+          <br /><br />
+          <h2>
+            <label for="job_description">Paste your job description</label>
+          </h2>
+          <textarea name="job_description" id="job_description"></textarea
+          ><br />
+          <button class="submit-btn" type="submit">SUBMIT</button>
+        </form>
+      </div>
+      <div class="div2">
+        {% if score is defined %}
+        <h3>Match Score: {{ score }}%</h3>
+      <!-- </div>
+      <div class="div3"> -->
+        {% for category, data in details.items() %}
+        <h4>{{ category }}</h4>
+        <p><strong>Required:</strong> {{ data.required }}</p>
+        <p><strong>Matched:</strong> {{ data.matched }}</p>
+        <p><strong>Missing:</strong> {{ data.missing }}</p>
+        {% endfor %} {% endif %}
+      </div>
     </div>
-    {% endif %}
   </body>
 </html>
