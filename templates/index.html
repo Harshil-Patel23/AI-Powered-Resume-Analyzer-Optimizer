@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AI Resume Scanner</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1>AI-Powered Resume Analyzer & Optimizer</h1>
+    </header>
+    <legend class="legend">
+      <form method="post" enctype="multipart/form-data">
+        <br />
+        <h2><label for="resume_pdf">Upload Your Resume</label></h2>
+        <input type="file" name="pdf_upload" accept="application/pdf" />
+        <br /><br />
+        <h2><label for="job_description">Paste your job description</label></h2>
+        <textarea name="job_description" id="job_description"></textarea><br />
+        <button type="submit">SUBMIT</button>
+      </form>
+    </legend>
+    {% if score is defined %}
+    <div class="result">
+      <h3>Match Score: {{ score }}%</h3>
+      {% for category, data in details.items() %}
+      <h4>{{ category }}</h4>
+      <p><strong>Required:</strong> {{ data.required }}</p>
+      <p><strong>Matched:</strong> {{ data.matched }}</p>
+      <p><strong>Missing:</strong> {{ data.missing }}</p>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </body>
+</html>
