@@ -157,7 +157,7 @@ def main():
                         # Display match score
                         st.markdown(f"""
                         <div class="score-container">
-                            <h3 class="score-text" style="    margin-top: -29px;text-align: left; color: white;">Match Score : {score}</h3>
+                            <h3 class="score-text" style="    margin-top: -29px;text-align: left; color: white;">Match Score : {score}%</h3>
                         </div>
                         """, unsafe_allow_html=True)
                         
@@ -176,7 +176,7 @@ def main():
                             # """, unsafe_allow_html=True)
                             
                             if data['required']:
-                                all_required_skills += "".join([f'<span class="skill-tag">{skill}%</span>' for skill in data['required']])
+                                all_required_skills += "".join([f'<span class="skill-tag">{skill}</span>' for skill in data['required']])
 
                         # Display all skills in the same line
                         st.markdown(all_required_skills, unsafe_allow_html=True)
